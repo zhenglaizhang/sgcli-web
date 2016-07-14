@@ -1,6 +1,9 @@
 package controllers
 
+import play.api.libs.json.Writes
 import play.api.mvc.Controller
+
+// query external apis
 
 /**
   * Created by Zhenglai on 7/14/16.
@@ -8,7 +11,6 @@ import play.api.mvc.Controller
 class Api extends Controller {
 
   import models.Repo
-  import play.api.libs.json.Writes
   import play.api.mvc.Action
 
   // dummy data
@@ -17,8 +19,8 @@ class Api extends Controller {
     Repo("frontend", "JavaScript", false, 392)
   )
 
-  // Typeclass for converting Repo -> JSON
-  // Or we could move this to model's companion objects
+  // type class for converting Repo -> JSON
+  // or we could move this to model's companion objects
   implicit val writesRepos = new Writes[Repo] {
 
     import play.api.libs.json.Json
