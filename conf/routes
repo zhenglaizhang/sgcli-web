@@ -5,6 +5,7 @@
 # An example controller showing a sample home page
 GET        /                           controllers.HomeController.index
 GET        /hello/:name                controllers.HomeController.hello(name)
+POST        /hello                      controllers.HomeController.helloPost
 GET        /hello/:name/picture        controllers.HomeController.pictureFor(name)
 GET        /hello/:first/:last         controllers.HomeController.hello2(first,last)
 GET        /json/:key/:value           controllers.HomeController.json(key,value)

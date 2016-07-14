@@ -27,6 +27,12 @@ class HomeController @Inject() extends Controller {
     Ok(s"hello $title$name")
   }
 
+  // other parsers: parse.file, parse.json, parse.xml, parse.urlFormEncoded
+  // curl --data "Scala is great" --header "Content-Type:text/plain" localhost:9000/hello
+  def helloPost = Action(parse.text) {request =>
+    Ok("Hello, You told me: " + request.body)
+  }
+
   def pictureFor(name: String) = Action {
     Ok(s"Hello $name, this is your picture")
   }
