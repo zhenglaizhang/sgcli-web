@@ -4,6 +4,10 @@
 
 # An example controller showing a sample home page
 GET         /                              controllers.HomeController.index
+
+# github views
+GET         /github                        controllers.GithubController.index
+
 GET         /api/repos/:userName           controllers.Api.repos(userName)
 GET         /api/v2/repos/:userName        controllers.ApiV2.reposAsync(userName)
 GET         /hello/:name                   controllers.HomeController.hello(name)
