@@ -5,6 +5,13 @@ package lib
   */
 object Util {
 
+  /*
+  * Apply takes arguments and by convention will return a value related to the object's name.
+  * If we take Scala's case classes as "correct" usage then the object Foo's apply will construct a Foo instance without needing to add "new". You are free of course to make apply do whatever you wish (key to value in Map, set contains value in Set, and indexing in Seq come to mind).
+  *
+  * Unapply, if returning an Option or Boolean can be used in match{} and pattern matching. Like apply it's just a def so can do whatever you dream up but the common usage is to extract value(s) from instances of the object's companion class.
+  * */
+
   // Pattern matching => Powerful tool for flow control
   // Think declaratively
   // Extractor
@@ -19,6 +26,13 @@ object Util {
       else
         Some(d)
     }
+  }
+
+  val nonZeroDouble(d) = 2.0
+  // syntactic sugar for
+  val d: Double = NonZeroDouble.unapply(d) match {
+    case Some(d) ⇒ d
+    case None ⇒ throw new MatchError(d)
   }
 
   // Client using extractors think about control flow declaratively, they need the NonZeroDouble,
